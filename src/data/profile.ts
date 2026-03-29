@@ -1,4 +1,12 @@
 import type { SnsLink } from "@/types";
+import {
+  SiGithub,
+  SiOrcid,
+  SiGooglescholar,
+  SiQiita,
+  SiX,
+} from "react-icons/si";
+import { FiExternalLink } from "react-icons/fi";
 
 export const profile = {
   name: { ja: "塚原 壮平", en: "Sohei Tsukahara" },
@@ -28,21 +36,23 @@ export const profile = {
   languages: ["日本語（母語）", "英語（論文執筆・国際発表）"],
   email: "your-email@example.com",
   sns: [
-    { label: "GitHub", url: "#" },
-    { label: "Inspire-HEP", url: "#" },
-    { label: "Google Scholar", url: "#" },
-    { label: "ORCID", url: "#" },
-    { label: "X", url: "#" },
-    { label: "Qiita", url: "#" },
+    { label: "GitHub", url: "#", icon: SiGithub },
+    { label: "Inspire-HEP", url: "#", icon: FiExternalLink },
+    { label: "Google Scholar", url: "#", icon: SiGooglescholar },
+    { label: "ORCID", url: "#", icon: SiOrcid },
+    { label: "X", url: "#", icon: SiX },
+    { label: "Qiita", url: "#", icon: SiQiita },
+    { label: "Note", url: "#", icon: FiExternalLink },
+    { label: "ResearchMap", url: "#", icon: FiExternalLink },
   ] satisfies SnsLink[],
   footerSns: [
-    { label: "X", url: "#" },
-    { label: "Inspire-HEP", url: "#" },
-    { label: "Google Scholar", url: "#" },
-    { label: "ResearchMap", url: "#" },
-    { label: "ORCID", url: "#" },
-    { label: "GitHub", url: "#" },
-    { label: "Note", url: "#" },
-    { label: "Qiita", url: "#" },
+    { label: "X", url: "#", icon: SiX },
+    { label: "Inspire-HEP", url: "#", icon: FiExternalLink },
+    { label: "Google Scholar", url: "#", icon: SiGooglescholar },
+    { label: "ResearchMap", url: "#", icon: FiExternalLink },
+    { label: "ORCID", url: "#", icon: SiOrcid },
+    { label: "GitHub", url: "#", icon: SiGithub },
+    { label: "Note", url: "#", icon: FiExternalLink },
+    { label: "Qiita", url: "#", icon: SiQiita },
   ] satisfies SnsLink[],
 };

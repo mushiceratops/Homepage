@@ -13,8 +13,8 @@ export function Hero() {
         </h1>
         <p className="text-sm text-text-sub mb-4">{profile.title}</p>
         <div className="flex flex-wrap justify-center md:justify-start gap-3">
-          {profile.sns.map(({ label, url }) => (
-            <SnsButton key={label} href={url}>
+          {profile.sns.map(({ label, url, icon }) => (
+            <SnsButton key={label} href={url} icon={icon}>
               {label}
             </SnsButton>
           ))}

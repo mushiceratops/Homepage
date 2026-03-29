@@ -83,4 +83,5 @@ export type Teaching = {
 export type SnsLink = {
   label: string;
   url: string;
+  icon: import("react-icons").IconType;
 };
