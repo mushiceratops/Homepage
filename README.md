@@ -80,3 +80,78 @@
 | ホスティング | Vercel |
 | バージョン管理 | GitHub |
 | DB | なし |
+
+---
+
+## ディレクトリ構成
+
+```
+Homepage/
+├── docs/                        # 設計ドキュメント
+│   ├── ui-design.md
+│   └── drafts/
+│       ├── homepage-plan.md
+│       └── sample.html
+├── public/
+│   └── images/
+│       └── avatar.jpg
+├── src/
+│   ├── app/                     # Next.js App Router（ルーティング専用）
+│   │   ├── layout.tsx           # ルートレイアウト（Header・Footer を含む）
+│   │   ├── globals.css          # Tailwind ベース + カスタム CSS
+│   │   ├── page.tsx             # Home (/)
+│   │   ├── research/
+│   │   │   └── page.tsx
+│   │   ├── works/
+│   │   │   └── page.tsx         # タブ切り替えはここで完結（#papers 等）
+│   │   ├── projects/
+│   │   │   └── page.tsx
+│   │   ├── activities/
+│   │   │   └── page.tsx
+│   │   └── cv/
+│   │       └── page.tsx
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Header.tsx
+│   │   │   └── Footer.tsx
+│   │   ├── ui/                  # 全ページで再利用する小さな部品
+│   │   │   ├── SectionHeading.tsx
+│   │   │   ├── Tag.tsx
+│   │   │   ├── MoreLink.tsx
+│   │   │   └── SnsButton.tsx
+│   │   ├── home/                # Home ページ固有のセクション
+│   │   │   ├── Hero.tsx
+│   │   │   ├── NewsSection.tsx
+│   │   │   ├── ResearchSnippet.tsx
+│   │   │   ├── WorksSnippet.tsx
+│   │   │   └── ProjectsSnippet.tsx
+│   │   ├── works/
+│   │   │   ├── WorksTabs.tsx
+│   │   │   └── PaperList.tsx
+│   │   ├── projects/
+│   │   │   └── ProjectCard.tsx
+│   │   └── cv/
+│   │       └── CvSection.tsx
+│   ├── data/                    # コンテンツの実体（型付き定数ファイル）
+│   │   ├── profile.ts           # 名前・肩書き・自己紹介・SNSリンク
+│   │   ├── news.ts
+│   │   ├── papers.ts
+│   │   ├── thesis.ts
+│   │   ├── talks.ts             # Invited Talks
+│   │   ├── presentations.ts
+│   │   ├── projects.ts
+│   │   ├── activities.ts
+│   │   └── cv.ts                # Education / Career / Awards 等
+│   └── types/
+│       └── index.ts             # Paper / Project / Talk 等の型定義
+├── tailwind.config.ts
+├── next.config.ts
+└── tsconfig.json
+```
+
+### 設計方針
+
+- `app/` はルーティング専用に保ち、コンポーネントは `components/` に統一する
+- `components/ui/` は複数ページで使う小部品、機能別ディレクトリ（`home/` `works/` 等）はページ固有のセクションを置く
+- `data/` のファイルを編集するだけでコンテンツを追加・更新できる構成にする
+- `types/index.ts` は型の数が少ないうちは 1 ファイルにまとめ、増えたら分割する

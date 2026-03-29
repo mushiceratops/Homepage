@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  /* カラーパレット */
+  --color-green: #00451E;
+  --color-green-light: #E8F3ED;
+  --color-green-border: #C8D9CC;
+  --color-surface: #EDE8DF;
+  --color-washi: #FAF7F2;
+  --color-text: #1A1A1A;
+  --color-text-sub: #555555;
+
+  /* フォント（layout.tsx で注入される CSS 変数を参照） */
+  --font-family-sans: var(--font-inter), var(--font-noto-sans), sans-serif;
+  --font-family-serif: var(--font-noto-serif), serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-washi);
+  color: var(--color-text);
+  font-family: var(--font-family-sans);
+  line-height: 1.8;
+}
+
+@layer base {
+  a {
+    color: var(--color-green);
+    text-decoration: none;
+  }
+}
+
+/* ナビリンク：下線スライドイン */
+.nav-link {
+  font-size: 0.875rem;
+  color: var(--color-text-sub);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-green);
+  transition: width 0.25s ease;
+}
+.nav-link:hover,
+.nav-link-active {
+  color: var(--color-green);
+}
+.nav-link:hover::after,
+.nav-link-active::after {
+  width: 100%;
+}
+
+/* 印刷スタイル */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  section {
+    border-bottom: 1px solid #ccc !important;
+  }
+  body {
+    background: white;
+    color: black;
+  }
+}
